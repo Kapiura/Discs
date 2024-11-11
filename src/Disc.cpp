@@ -42,6 +42,9 @@ void Disc::update() {
 
   velocity += attractionForce;
 
+  glm::vec3 dragForce = calculateDragForce() / 1000000000000.0f;
+  velocity -= dragForce;
+
   position += velocity;
 
   colision();
@@ -100,4 +103,19 @@ void Disc::widthChangeUpdate() {
     cy = tempHeight / 2.0f;
     height = tempHeight;
   }
+}
+
+float Disc::getViscosity() {
+  float minViscosity = 0.1f;
+  float maxViscosity = 1.0f;
+  float normalizedX = position.x / ofGetWidth();
+  return minViscosity + normalizedX * (maxViscosity - minViscosity);
+}
+
+glm::vec3 Disc::calculateDragForce() {
+  float viscosity = getViscosity();
+  float speed = glm::length(velocity);
+  glm::vec3 dragForce =
+      -6.0f * PI * viscosity * radius * speed * glm::normalize(velocity);
+  return dragForce;
 }

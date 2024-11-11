@@ -11,6 +11,8 @@ public:
   void colision();
   void draw();
   void widthChangeUpdate();
+  glm::vec3 calculateDragForce();
+  float getViscosity();
 
   glm::vec3 position;
   glm::vec3 velocity;
