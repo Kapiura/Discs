@@ -25,7 +25,7 @@ Disc::Disc() {
   color.g = ofRandom(0.0f, 255.0f);
   color.b = ofRandom(0.0f, 255.0f);
   material.setDiffuseColor(color);
-  material.setSpecularColor(ofColor(255)); // Kolor odbicia
+  material.setSpecularColor(ofColor(255));
   material.setShininess(64);
 }
 
@@ -37,7 +37,7 @@ void Disc::update() {
     direction = glm::normalize(direction);
   }
 
-  float forceMagnitude = force / (distance * distance + 1.0f);
+  float forceMagnitude = force / (distance * distance + 1000.0f);
   glm::vec3 attractionForce = direction * forceMagnitude;
 
   velocity += attractionForce;
