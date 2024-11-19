@@ -1,6 +1,6 @@
-obj/linux64/Release/src/Disc.o: \
- /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Disc.cpp \
- /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Disc.hpp \
+obj/linux64/Release/src/Force.o: \
+ /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.cpp \
+ /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp \
  ../../../libs/openFrameworks/ofMain.h \
  ../../../libs/openFrameworks/utils/ofConstants.h \
  ../../../libs/tess2/include/tesselator.h \
@@ -321,9 +321,8 @@ obj/linux64/Release/src/Disc.o: \
  ../../../libs/openFrameworks/3d/of3dUtils.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
  ../../../libs/openFrameworks/3d/ofEasyCam.h \
- /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp \
  /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Constants.h
-/home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Disc.hpp:
+/home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp:
 ../../../libs/openFrameworks/ofMain.h:
 ../../../libs/openFrameworks/utils/ofConstants.h:
 ../../../libs/tess2/include/tesselator.h:
@@ -645,5 +644,4 @@ obj/linux64/Release/src/Disc.o: \
 ../../../libs/openFrameworks/3d/of3dUtils.h:
 ../../../libs/openFrameworks/3d/ofCamera.h:
 ../../../libs/openFrameworks/3d/ofEasyCam.h:
-/home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp:
 /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Constants.h:

@@ -321,7 +321,8 @@ obj/linux64/Release/src/ofApp.o: \
  ../../../libs/openFrameworks/video/ofVideoPlayer.h \
  ../../../libs/openFrameworks/3d/of3dUtils.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
- ../../../libs/openFrameworks/3d/ofEasyCam.h
+ ../../../libs/openFrameworks/3d/ofEasyCam.h \
+ /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp
 /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/ofApp.h:
 /home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Disc.hpp:
 ../../../libs/openFrameworks/ofMain.h:
@@ -645,3 +646,4 @@ obj/linux64/Release/src/ofApp.o: \
 ../../../libs/openFrameworks/3d/of3dUtils.h:
 ../../../libs/openFrameworks/3d/ofCamera.h:
 ../../../libs/openFrameworks/3d/ofEasyCam.h:
+/home/chania/Downloads/of_v0.12.0_linux64gcc6_release/apps/myApps/Discs/src/Force.hpp:

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Disc.hpp"
+#include "Force.hpp"
 #include "ofMain.h"
 
 class ofApp : public ofBaseApp {
@@ -24,5 +25,6 @@ public:
   void gotMessage(ofMessage msg);
 
   std::vector<Disc> discs;
+  Force force;
   ofLight light;
 };

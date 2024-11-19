@@ -1,18 +1,9 @@
 #include "Disc.hpp"
+#include "Force.hpp"
 #include "Constants.h"
 
-float Disc::width = 0.0f;
-float Disc::height = 0.0f;
-float Disc::cx = 0.0f;
-float Disc::cy = 0.0f;
-float Disc::force = 0.0f;
 
 Disc::Disc() {
-  width = ofGetWidth();
-  height = ofGetHeight();
-  cx = ofGetWidth() / 2.0f;
-  cy = ofGetHeight() / 2.0f;
-  force = FORCE;
   radius = ofRandom(2.0f, RADIUS);
   mass = radius * 0.5f;
   position.x = ofRandom(radius, ofGetWidth() - radius);
@@ -29,26 +20,30 @@ Disc::Disc() {
   material.setShininess(64);
 }
 
-void Disc::update() {
-  glm::vec3 direction = glm::vec3(cx, cy, position.z) - position;
-  float distance = glm::length(direction);
+void Disc::update(Force& force) {
+  for(auto& el: force.forcesArray)
+  {
+    glm::vec3 direction = glm::vec3(el.first, el.second, position.z) - position;
+    float distance = glm::length(direction);
 
-  if (distance > 0.0f) {
-    direction = glm::normalize(direction);
+    if(distance > 0.0f)
+    {
+      direction = glm::normalize(direction);
+    }
+
+    float forceMagnitude = force.force / (distance * distance);
+    glm::vec3 attractionForce = direction * forceMagnitude;
+
+    velocity += attractionForce;
   }
 
-  float forceMagnitude = force / (distance * distance + 1000.0f);
-  glm::vec3 attractionForce = direction * forceMagnitude;
-
-  velocity += attractionForce;
-
-  glm::vec3 dragForce = calculateDragForce() / 1000000000000.0f;
+  glm::vec3 dragForce = calculateDragForce() / 100000000000000000000000000000.0f;
   velocity -= dragForce;
 
   position += velocity;
 
   colision();
-  widthChangeUpdate();
+  widthChangeUpdate(force);
 }
 
 void Disc::colision() {
@@ -86,31 +81,38 @@ void Disc::draw() {
   material.end();
 }
 
-void Disc::widthChangeUpdate() {
+void Disc::widthChangeUpdate(Force& force) {
   float tempWidth = ofGetWidth();
   float tempHeight = ofGetHeight();
 
-  if (tempWidth != width) {
-    float deltaX = tempWidth - width;
+  if (tempWidth != force.width) {
+    float deltaX = tempWidth - force.width;
     position.x += deltaX / 2.0f;
-    cx = tempWidth / 2.0f;
-    width = tempWidth;
+    force.cx = tempWidth / 2.0f;
+    force.width = tempWidth;
   }
 
-  if (tempHeight != height) {
-    float deltaY = tempHeight - height;
+  if (tempHeight != force.height) {
+    float deltaY = tempHeight - force.height;
     position.y += deltaY / 2.0f;
-    cy = tempHeight / 2.0f;
-    height = tempHeight;
+    force.cy = tempHeight / 2.0f;
+    force.height = tempHeight;
   }
 }
+
 
 float Disc::getViscosity() {
-  float minViscosity = 0.1f;
-  float maxViscosity = 1.0f;
-  float normalizedX = position.x / ofGetWidth();
-  return minViscosity + normalizedX * (maxViscosity - minViscosity);
+    float minViscosity = 0.1f;
+    float maxViscosity = 1.0f;
+    float normalizedX = position.x / ofGetWidth();
+    float normalizedY = position.y / ofGetHeight();
+
+    float viscosityX = minViscosity + normalizedX * (maxViscosity - minViscosity);
+    float viscosityY = minViscosity + (1.0f - normalizedY) * (maxViscosity - minViscosity);
+
+    return (viscosityX + viscosityY) / 2.0f;
 }
+
 
 glm::vec3 Disc::calculateDragForce() {
   float viscosity = getViscosity();
