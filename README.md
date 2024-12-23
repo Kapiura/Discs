@@ -1,9 +1,5 @@
 # Floating-Discs
-just downlaod it
-```
-make && make run
-```
-have fun watching balls
-
-you have to download it into openFrameworks myApps directory
-idk
+# 1
+[![disc1](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/-fr3RTzAI8s)
+# 2
+[![disc2](https://i.sstatic.net/Vp2cE.png)](https://youtu.be/eGIstN6LI74)
